@@ -72,6 +72,9 @@ public class TwitterProducer {
         client.connect();
         try(Producer<Long, String> producer = getProducer()) {
             while (true){
+                /**
+                 * This piece of code take each tweet from the twitter api and put it on the Kafka Topic
+                 */
                 Tweet tweet = gson.fromJson(queue.take(), Tweet.class);
                 if(tweet.getId() != 0 && tweet.getLang().equals("en")){
                     out.printf("Fetched tweet id %d \n ", tweet.getId());
