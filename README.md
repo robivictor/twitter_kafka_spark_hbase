@@ -25,10 +25,11 @@ $ sh get-docker.sh
 
 ## Steps
 1. [Clone the repo](#1-clone-the-repo)
-2. [Set up the infrastructure](#2-set-up-the-infrastructure)
-3. [Launch the Ingestion Module](#3-launch-the-ingestion-module)
-4. [Launch the Processing Module](#4-launch-the-processing-module)
-5. [Visualize the results](#5-visualize-the-results)
+2. [Create twitter deveoper account and get the keys](#2-setup-twitter-developer-acesss)
+3. [Set up the infrastructure](#3-set-up-the-infrastructure)
+4. [Launch the Ingestion Module](#4-launch-the-ingestion-module)
+5. [Launch the Processing Module](#5-launch-the-processing-module)
+6. [Visualize the results](#6-visualize-the-results)
 
 ### 1. Clone the repo
 
@@ -38,7 +39,8 @@ Clone this repository. In a terminal, run:
 $ git clone https://github.com/robivictor/twitter_kafka_spark_hbase.git
 ```
 
-### 2. Create a twitter developer account and create an app to get the following four keys
+### 2. Setup twitter developer acesss
+You need to setup a developer account and create an app to get these four keys
 *  **apiKey** 
 * **apiSecret** 
 * **accessToken**
