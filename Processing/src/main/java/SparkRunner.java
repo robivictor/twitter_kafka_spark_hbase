@@ -1,21 +1,19 @@
-import config.HBaseConfig;
-import consumer.KafkaConsumer;
-import jobs.SentimentAnalysis;
+import java.util.List;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.spark.HBaseContext;
 import org.apache.hadoop.hbase.spark.JavaHBaseContext;
 import org.apache.spark.SparkConf;
-import org.apache.spark.SparkContext;
-import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.api.java.JavaPairDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
+import config.HBaseConfig;
+import consumer.KafkaConsumer;
+import jobs.SentimentAnalysis;
 import sink.HbaseSink;
-import java.util.List;
 
 public class SparkRunner {
     public static void main(String[] args) {
@@ -24,6 +22,7 @@ public class SparkRunner {
                 .builder()
                 .config(conf)
                 .getOrCreate();
+
         /**
          * This piece of code does consume the stream of data being produced by Kafka
          * */

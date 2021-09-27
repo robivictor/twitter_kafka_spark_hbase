@@ -12,16 +12,14 @@ import java.util.stream.Collectors;
 
 public class SentimentAnalysis implements Serializable {
 
-    //private transient Broadcast<Set<String>> uselessWords;
-    //private transient Broadcast<Set<String>> positiveWords;
-    //private transient Broadcast<Set<String>> negativeWords;
+    private transient Broadcast<Set<String>> positiveWords;
+    private transient Broadcast<Set<String>> negativeWords;
     private ClassLoader classLoader;
 
     public SentimentAnalysis(JavaStreamingContext jssc) {
-        //classLoader = PropertiesUtil.class.getClassLoader();
-        //uselessWords = jssc.sparkContext().broadcast(SentimentAnalysisUtil.loadFile(classLoader.getResource("stop-words.dat").getPath()));
-        //positiveWords = jssc.sparkContext().broadcast(SentimentAnalysisUtil.loadFile(classLoader.getResource("pos-words.dat").getPath()));
-        //negativeWords = jssc.sparkContext().broadcast(SentimentAnalysisUtil.loadFile(classLoader.getResource("neg-words.dat").getPath()));
+        classLoader = PropertiesUtil.class.getClassLoader();
+        positiveWords = jssc.sparkContext().broadcast(SentimentAnalysisUtil.loadFile(classLoader.getResource("pos-words.dat").getPath()));
+        negativeWords = jssc.sparkContext().broadcast(SentimentAnalysisUtil.loadFile(classLoader.getResource("neg-words.dat").getPath()));
     }
 
     public JavaDStream<String> applySentimentAnalysis(JavaPairDStream<String, List<String>> stream){
@@ -31,7 +29,7 @@ public class SentimentAnalysis implements Serializable {
                 .mapValues(significantStream -> significantStream.collect(Collectors.toList()));
 
         JavaPairDStream<String, Integer> textScoreTuple = textUsefulWordsPair
-                .mapValues((words) -> SentimentAnalysisUtil.computeScore(words))
+                .mapValues((words) -> SentimentAnalysisUtil.computeScoreAlternative(words))
                 .filter(textScore -> textScore._2 != 0);
 
         JavaDStream<String> formattedResult = textScoreTuple.map(textScore -> Double.toString(Math.random()).replace("0.", "") + ":text:" + textScore._1.replace(':', ',')+ ":score:" + textScore._2);

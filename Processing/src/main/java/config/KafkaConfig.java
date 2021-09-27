@@ -1,9 +1,7 @@
 package config;
 
 import org.apache.kafka.common.serialization.LongDeserializer;
-import org.apache.kafka.common.serialization.LongSerializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.apache.kafka.common.serialization.StringSerializer;
 
 public class KafkaConfig {
     public static final String boostrapservers = "kafka:9092";
