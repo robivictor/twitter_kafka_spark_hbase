@@ -1,12 +1,13 @@
 # Big Data Course Project
 ## Kafka-Spark-HBase Twitter Sentiment-Analysis
 
-
 ## Description
 This project is done for my course work in Big Data Technology, it shows a basic implementation of a Big data workflo using certain big data technologies such as Apache Kafka, Apache Zookeeper, Apache Spark and Apache Hbase. <br/> 
 
 This core analysis done in this project is a very trivial computation on a stream of tweets fetched from a twitter api in real time. 
 It will compute the score of each tweet by weighing the amount of negative and/or positve words used in the tweet. I have used a set of predefined set of positive and neagtive words to do the filtering on the stream of tweets.
+
+![Processing flow](Processing.PNG)
 
 ## Architecture
 
