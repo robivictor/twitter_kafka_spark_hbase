@@ -6,6 +6,7 @@
 This project is done for my course work in Big Data Technology, it shows a basic implementation of a Big data workflo using certain big data technologies such as Apache Kafka, Apache Zookeeper, Apache Spark and Apache Hbase. <br/> 
 
 This core analysis done in this project is a very trivial computation on a stream of tweets fetched from a twitter api in real time. 
+It will compute the score of each tweet by weighing the amount of negative and/or positve words used in the tweet. I have used a set of predefined set of positive and neagtive words to do the filtering on the stream of tweets.
 
 ## Architecture
 
@@ -59,9 +60,9 @@ The docker-compose.yml file launches
 I used Hbase in standalone mode. In this case, HBase does not use HDFS — it uses the local filesystem instead — and it runs all HBase daemons and a local ZooKeeper all up in the same JVM.
 
 The docker-compose.yml is based on these images, most of the setup is done on the images. The credit goes to them.
- [wurstmeister/kafka](https://github.com/wurstmeister/kafka-docker)
- [singularities/spark](https://hub.docker.com/r/singularities/spark/)
- [dajobe/hbase](https://hub.docker.com/r/ziedyazidi/hbase) based on [dajobe/hbase](https://github.com/dajobe/hbase-docker).
+ * [wurstmeister/kafka](https://github.com/wurstmeister/kafka-docker)
+ * [singularities/spark](https://hub.docker.com/r/singularities/spark/)
+ * [ziedyazidi/hbase](https://hub.docker.com/r/ziedyazidi/hbase) based on [dajobe/hbase](https://github.com/dajobe/hbase-docker).
 
 All you need to do in this section is launch the docker compose file as follows:
 ```bash
